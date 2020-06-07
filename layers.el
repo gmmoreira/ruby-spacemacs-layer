@@ -1,1 +1,1 @@
-(configuration-layer/declare-layer-dependencies '(dap ruby))
+(configuration-layer/declare-layer-dependencies '(dap lsp ruby))

@@ -1,47 +1,22 @@
-;; (when (configuration-layer/package-used-p 'dap-mode)
-;;   (defun gmmoreira--dap-ruby-populate-start-file-args (conf)
-;;     "Populate CONF with the required arguments."
-;;     (-> conf
-;;       (dap--put-if-absent :dap-server-path dap-ruby-debug-program)
-;;       (dap--put-if-absent :type "Ruby")
-;;       (dap--put-if-absent :cwd (projectile-project-root))
-;;       (dap--put-if-absent :request "launch")
-;;       (dap--put-if-absent :program "bin/bundle")
-;;       (dap--put-if-absent :args `("exec" ,rspec-spec-command ,(rspec-spec-file-for (buffer-file-name)))))))
+(defun gmmoreira--dap-ruby-populate-start-file-args (conf)
+  "Populate CONF with the required arguments."
+  (-> conf
+    (dap--put-if-absent :dap-server-path dap-ruby-debug-program)
+    (dap--put-if-absent :type "Ruby")
+    (dap--put-if-absent :cwd (projectile-project-root))
+    (dap--put-if-absent :request "launch")
+    (when (eq (plist-get conf :name) "Ruby RSpec File")
+      (dap--put-if-absent conf :args `("exec" ,rspec-spec-command ,(rspec-spec-file-for (buffer-file-name))))
+      (dap--put-if-absent :program "bin/bundle")
+      )
+    )
+  )
 
-(when (and
-        (configuration-layer/package-used-p 'dap-mode)
-        (configuration-layer/package-used-p 'rspec-mode)
-        (configuration-layer/package-used-p 'projectile))
-  (defun gmmoreira--dap-ruby-populate-start-file-args (conf)
-    "Populate CONF with the required arguments."
-        (-> conf
-          (dap--put-if-absent :dap-server-path dap-ruby-debug-program)
-          (dap--put-if-absent :type "Ruby")
-          (dap--put-if-absent :cwd (projectile-project-root))
-          (dap--put-if-absent :request "launch")
-          (dap--put-if-absent :program "bin/bundle")
-          (when (eq (plist-get conf :name) "Ruby RSpec File")
-            (plist-put conf :name `("exec" ,rspec-spec-command ,(rspec-spec-file-for (buffer-file-name))))))))
-;; (when (and
-;;         (configuration-layer/package-used-p 'dap-mode)
-;;         (configuration-layer/package-used-p 'rspec-mode)
-;;         (configuration-layer/package-used-p 'projectile))
-;;   (defun gmmoreira--dap-ruby-populate-start-file-args (conf)
-;;     "Populate CONF with the required arguments."
-;;     (-> conf
-;;       (dap--put-if-absent :dap-server-path dap-ruby-debug-program)
-;;       (dap--put-if-absent :type "Ruby")
-;;       (dap--put-if-absent :cwd (projectile-project-root))
-;;       (dap--put-if-absent :request "launch")
-;;       (dap--put-if-absent :program "bin/bundle")
-;;       (when (eq (plist-get conf :name) "Ruby RSpec File")
-;;         (dap--put-if-absent :args `("exec" ,rspec-spec-command ,(rspec-spec-file-for (buffer-file-name))))
-;;         )
-;;       )
-;;     )
-;;   )
-                                        ; file-executable-p
+(defun gmmoreira--dap-ruby-setup ()
+  (dap-register-debug-provider "Ruby" 'gmmoreira--dap-ruby-populate-start-file-args)
+  )
+
+;; file-executable-p
 
 ;; (defun dap-java--populate-launch-args (conf)
 ;;   "Populate CONF with launch related configurations."
