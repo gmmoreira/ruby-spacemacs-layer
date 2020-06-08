@@ -3,7 +3,7 @@
 # The example below contains 2 tags: "layer" and "web service"
 # Avaliable tags are listed in <spacemacs_root>/.ci/spacedoc-cfg.edn
 # under ":spacetools.spacedoc.config/valid-tags" section.
-#+TAGS: layer|web service
+#+TAGS: general|layer|multi-paradigm|programming
 
 # The maximum height of the logo should be 200 pixels.
 [[img/gmmoreira-ruby.png]]
@@ -12,28 +12,44 @@
 * Table of Contents                                        :TOC_4_gh:noexport:
 - [[#description][Description]]
   - [[#features][Features:]]
+  - [[#wip][WIP]]
+    - [[#prefer-binbundle-over-global-bundle-command][prefer =bin/bundle= over global =bundle= command]]
+    - [[#run-rspec-at-point][run rspec at point]]
+    - [[#run-rails-server][run rails server]]
 - [[#install][Install]]
 - [[#key-bindings][Key bindings]]
 
 * Description
-This layer adds support for something.
+This layer adds my own configuration above the following other layers:
+- ruby
+- dap
 
 ** Features:
-  - Autocomplete
-  - Lint
-  - Refactor
-  - ...
+- More DAP debugging templates
+  - Ruby RSpec File :: execute =rspec= for the current file
+- Keybinding for rubocop auto correct file
+
+** WIP
+*** TODO prefer =bin/bundle= over global =bundle= command
+*** TODO run rspec at point
+*** TODO run rails server
 
 * Install
 To use this configuration layer, add it to your =~/.spacemacs=. You will need to
 add =gmmoreira-ruby= to the existing =dotspacemacs-configuration-layers= list in this
 file.
+You also need to clone this repository in =~/.emacs.d/private= directory.
+
+#+begin_src shell
+  git clone https://github.com/gmmoreira/ruby-spacemacs-layer.git ~/.emacs.d/private/gmmoreira-ruby/y
+#+end_src
 
 * Key bindings
 
-| Key Binding | Description    |
-|-------------+----------------|
-| ~SPC x x x~ | Does thing01   |
+| Key Binding | Description                      |
+|-------------+----------------------------------|
+| ~SPC d d d~ | dap-debug                        |
+| ~SPC m R F  | rubocop-autocorrect-current-file |
 
 # Use GitHub URLs if you wish to link a Spacemacs documentation file or its heading.
 # Examples:

@@ -30,7 +30,7 @@
 ;;; Code:
 
 (defconst gmmoreira-ruby-packages
-  '(dap-mode))
+  '(dap-mode rubocop))
 
 (defun gmmoreira-ruby/pre-init-dap-mode ()
   (spacemacs|use-package-add-hook dap-mode
@@ -39,8 +39,14 @@
       "Ruby RSpec File"
       (list :type "Ruby"
         :name "Ruby RSpec File")))
+  ;; I had to look in ruby layer to figure out how to register my adapter after the dap-ruby is required, otherwise my adapter was being overridden
   (spacemacs/add-to-hooks #'gmmoreira--dap-ruby-setup
     '(ruby-mode-local-vars-hook
-       enh-ruby-mode-local-vars-hook))
-  )
+       enh-ruby-mode-local-vars-hook)))
+
+(defun gmmoreira-ruby/post-init-rubocop ()
+  (dolist (mode '(ruby-mode enh-ruby-mode))
+    (spacemacs/declare-prefix-for-mode mode "mR" "RuboCop")
+    (spacemacs/set-leader-keys-for-major-mode mode
+      "RF" 'rubocop-autocorrect-current-file)))
 ;;; packages.el ends here

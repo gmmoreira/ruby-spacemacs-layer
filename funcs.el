@@ -16,6 +16,8 @@
   (dap-register-debug-provider "Ruby" 'gmmoreira--dap-ruby-populate-start-file-args)
   )
 
+;; The following section is here just for reference
+
 ;; file-executable-p
 
 ;; (defun dap-java--populate-launch-args (conf)
