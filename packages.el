@@ -38,7 +38,11 @@
     (dap-register-debug-template
       "Ruby RSpec File"
       (list :type "Ruby"
-        :name "Ruby RSpec File")))
+        :name "Ruby RSpec File"))
+    (dap-register-debug-template
+      "Ruby RSpec File Single"
+      (list :type "Ruby"
+        :name "Ruby RSpec File Single")))
   ;; I had to look in ruby layer to figure out how to register my adapter after the dap-ruby is required, otherwise my adapter was being overridden
   (spacemacs/add-to-hooks #'gmmoreira--dap-ruby-setup
     '(ruby-mode-local-vars-hook
