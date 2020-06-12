@@ -7,6 +7,9 @@
     (when (string-equal (plist-get conf :name) "Ruby RSpec File Single")
       (setq
         args (list "exec" rspec-spec-command (format "%s:%s" (rspec-spec-file-for (buffer-file-name)) (line-number-at-pos)))))
+    (when (string-equal (plist-get conf :name) "Rails Server")
+      (setq
+        args (list "exec" "rails" "server")))
     (-> conf
       (dap--put-if-absent :dap-server-path dap-ruby-debug-program)
       (dap--put-if-absent :type "Ruby")

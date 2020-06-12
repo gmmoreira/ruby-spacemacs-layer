@@ -27,14 +27,17 @@ This layer adds my own configuration above the following other layers:
 ** Features:
 - More DAP debugging templates
   - Ruby RSpec File :: execute =rspec= for the current file
+  - Ruby RSpec File Single :: execute =rspec= for the current file at cursor position
+  - Rails Server :: execute =rails server=
 - Keybinding for rubocop auto correct file
 
 ** WIP
 *** DONE prefer =bin/bundle= over global =bundle= command
-    CLOSED: [2020-06-11 Thu 16:57]
+CLOSED: [2020-06-11 Thu 16:57]
 *** DONE run rspec at point
-    CLOSED: [2020-06-11 Thu 16:57]
-*** TODO run rails server
+CLOSED: [2020-06-11 Thu 16:57]
+*** DONE run rails server
+CLOSED: [2020-06-12 Fri 09:06]
 
 * Install
 To use this configuration layer, add it to your =~/.spacemacs=. You will need to
