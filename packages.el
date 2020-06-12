@@ -30,7 +30,7 @@
 ;;; Code:
 
 (defconst gmmoreira-ruby-packages
-  '(dap-mode rubocop bundler mutant))
+  '(dap-mode rubocop mutant))
 
 (defun gmmoreira-ruby/pre-init-dap-mode ()
   (spacemacs|use-package-add-hook dap-mode
