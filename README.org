@@ -33,7 +33,7 @@ This layer adds my own configuration above the following other layers:
     gem. More details in the author repository:
     https://github.com/p-lambert/mutant.el.
 
-    The following variables has been customized:
+    The following variables have been customized:
 
     | Variable          | Value                                      |
     | ~mutant-cmd-base~ | "bundle exec mutant" (default is "mutant") |
