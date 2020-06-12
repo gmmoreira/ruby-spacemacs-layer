@@ -43,7 +43,7 @@ file.
 You also need to clone this repository in =~/.emacs.d/private= directory.
 
 #+begin_src shell
-  git clone https://github.com/gmmoreira/ruby-spacemacs-layer.git ~/.emacs.d/private/gmmoreira-ruby/y
+  git clone https://github.com/gmmoreira/ruby-spacemacs-layer.git ~/.emacs.d/private/gmmoreira-ruby
 #+end_src
 
 * Key bindings
