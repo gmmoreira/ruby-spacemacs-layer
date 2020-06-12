@@ -30,7 +30,7 @@
 ;;; Code:
 
 (defconst gmmoreira-ruby-packages
-  '(dap-mode rubocop))
+  '(dap-mode rubocop bundler mutant))
 
 (defun gmmoreira-ruby/pre-init-dap-mode ()
   (spacemacs|use-package-add-hook dap-mode
@@ -59,4 +59,16 @@
     (spacemacs/declare-prefix-for-mode mode "mR" "RuboCop")
     (spacemacs/set-leader-keys-for-major-mode mode
       "RF" 'rubocop-autocorrect-current-file)))
+
+(defun gmmoreira-ruby/init-mutant ()
+  (use-package mutant
+    :defer t
+    :custom
+    (mutant-cmd-base "bundle exec mutant"))
+  (dolist (mode '(ruby-mode enh-ruby-mode))
+    (spacemacs/declare-prefix-for-mode mode "mc" "code tools")
+    (spacemacs/declare-prefix-for-mode mode "mcm" "mutant")
+    (spacemacs/set-leader-keys-for-major-mode mode
+      "cmf" 'mutant-check-file
+      "cmc" 'mutant-check-custom)))
 ;;; packages.el ends here

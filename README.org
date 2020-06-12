@@ -12,6 +12,7 @@
 * Table of Contents                                        :TOC_4_gh:noexport:
 - [[#description][Description]]
   - [[#features][Features:]]
+    - [[#mutant][Mutant]]
   - [[#wip][WIP]]
     - [[#prefer-binbundle-over-global-bundle-command][prefer =bin/bundle= over global =bundle= command]]
     - [[#run-rspec-at-point][run rspec at point]]
@@ -30,6 +31,14 @@ This layer adds my own configuration above the following other layers:
   - Ruby RSpec File Single :: execute =rspec= for the current file at cursor position
   - Rails Server :: execute =rails server=
 - Keybinding for rubocop auto correct file
+
+*** Mutant
+    ~mutant.el~ is a package which provides an interface for the ~mutant~ Ruby's gem.
+
+    The following variables has been customized:
+
+    | Variable          | Value                                      |
+    | ~mutant-cmd-base~ | "bundle exec mutant" (default is "mutant") |
 
 ** WIP
 *** DONE prefer =bin/bundle= over global =bundle= command
@@ -51,10 +60,12 @@ You also need to clone this repository in =~/.emacs.d/private= directory.
 
 * Key bindings
 
-| Key Binding | Description                      |
-|-------------+----------------------------------|
-| ~SPC d d d~ | dap-debug                        |
-| ~SPC m R F  | rubocop-autocorrect-current-file |
+| Key Binding   | Description                      |
+|---------------+----------------------------------|
+| ~SPC d d d~   | dap-debug                        |
+| ~SPC m R F~   | rubocop-autocorrect-current-file |
+| ~SPC m c m f~ | mutant-check-file                |
+| ~SPC m c m c~ | mutant-check-custom              |
 
 # Use GitHub URLs if you wish to link a Spacemacs documentation file or its heading.
 # Examples:
