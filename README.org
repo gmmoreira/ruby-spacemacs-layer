@@ -29,7 +29,9 @@ This layer adds my own configuration above the following other layers:
 - Keybinding for rubocop auto correct file
 
 *** Mutant
-    ~mutant.el~ is a package which provides an interface for the ~mutant~ Ruby's gem.
+    ~mutant.el~ is a package which provides an interface for the ~mutant~ Ruby's
+    gem. More details in the author repository:
+    https://github.com/p-lambert/mutant.el.
 
     The following variables has been customized:
 
